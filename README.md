@@ -40,15 +40,15 @@ const users2 = jsonbases('users-2', format, './path/to/your/database');
 
 ```javascript
 // Create a new item with default values
-const newItem = db.createItem(); // returns object. ex: { name: null, age: null, _id: 'ad5sad132' }
+const newItem = db.createItem(); // returns object ex: { name: null, age: null, _id: 'ad5sad132' }
 ```
 
 - **add(item)** Adds a new item to the database if it conforms to the specified data format.
 
 ```javascript
 // Add a new item to the database
-newItem.name = 'John'
-newItem.age = 25
+newItem.name = 'John';
+newItem.age = 25;
 const added = db.add(newItem); // returns boolean
 ```
 
@@ -70,7 +70,7 @@ const allItems = db.findAll({ age: 25 }); // returns list
 
 ```javascript
 // Update an existing item
-newItem.age = 26
+newItem.age = 26;
 const updated = db.update(newItem); // returns boolean
 ```
 
