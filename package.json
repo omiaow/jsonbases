@@ -1,0 +1,11 @@
+{
+  "name": "jsonbases",
+  "version": "1.1.1",
+  "description": "Local database with json.",
+  "main": "jsonbase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omurzak Keldibekov",
+  "license": "Apache License 2.0"
+}

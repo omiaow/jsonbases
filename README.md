@@ -31,58 +31,73 @@ const format = {
 
 // Create user table named "users", optionally specify the path, by default it's './jsonbases'.
 const users = jsonbases('users', format, './path/to/your/database');
+```
 
+- **createItem()** Creates a new item with properties initialized to null based on the defined data format.
+
+```
 // Create a new item with default values
 const newItem = db.createItem(); // returns object. ex: { name: null, age: null, _id: 'ad5sad132' }
+```
 
+- **add(item)** Adds a new item to the database if it conforms to the specified data format.
+
+```
 // Add a new item to the database
 newItem.name = 'John'
 newItem.age = 25
 const added = db.add(newItem); // returns boolean
-
-// Find an item by unique values
-const foundItem = db.find({ name: 'John' }); // returns object
-
-// Find all items matching certain criteria
-const allItems = db.findAll({ age: 25 }); // returns list
-
-// Update an existing item
-newItem.age = 26
-const updated = db.update(newItem); // returns boolean
-
-// Remove an item by unique values
-const removed = db.remove({ name: 'John' }); // returns boolean
-
-// Remove all items matching certain criteria
-const removedAll = db.removeAll({ age: 26 }); // returns boolean
-
-// Get all items in the database
-const allData = db.getAll(); // returns list
-
-// Reset the database (remove all items)
-db.reset();
-
 ```
-
-## Functions
-
-- **createItem()** Creates a new item with properties initialized to null based on the defined data format.
-
-- **add(item)** Adds a new item to the database if it conforms to the specified data format.
 
 - **find(item)** Finds and returns an item in the database based on the provided ID.
 
+```
+// Find an item by unique values
+const foundItem = db.find({ name: 'John' }); // returns object
+```
+
 - **findAll(item)** Finds and returns an array of items in the database based on the provided criteria.
+
+```
+// Find all items matching certain criteria
+const allItems = db.findAll({ age: 25 }); // returns list
+```
 
 - **update(item)** Updates an existing item in the database with the provided data and original ID.
 
+```
+// Update an existing item
+newItem.age = 26
+const updated = db.update(newItem); // returns boolean
+```
+
 - **remove(item)** Removes an item from the database based on the provided criteria.
+
+```
+// Remove an item by unique values
+const removed = db.remove({ name: 'John' }); // returns boolean
+```
 
 - **removeAll(item)** Removes all items from the database that match the provided criteria.
 
+```
+// Remove all items matching certain criteria
+const removedAll = db.removeAll({ age: 26 }); // returns boolean
+```
+
 - **getAll()** Returns an array containing all items in the database.
 
-- **resetTable()** Resets the entire table, removing all items.
+```
+// Get all items in the database
+const allData = db.getAll(); // returns list
+```
+
+- **reset()** Resets the entire table, removing all items.
+
+```
+// Reset the database (remove all items)
+db.reset();
+```
 
 ## Features
 
