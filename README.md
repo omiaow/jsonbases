@@ -8,7 +8,7 @@
   </a>
 </p>
 
-#### Jsonbases - simple utility for managing JSON-based databases in Node.js. It provides functions to create, read, update, and delete records in a JSON file, following a specified data format.
+#### Jsonbases - simple package to manage JSON-based database in Node.js. It provides functions to create, read, update, and delete records in a JSON file, following a specified data format.
 
 ## Installation
 ```
@@ -29,8 +29,11 @@ const format = {
     uniques: ['name'],
 };
 
-// Create user table named "users", optionally specify the path, by default it's './jsonbases'.
-const users = jsonbases('users', format, './path/to/your/database');
+// Create user table named "users".
+const users1 = jsonbases('users-1', format);
+
+//Optionally specify the path, by default it's './jsonbases'
+const users2 = jsonbases('users-2', format, './path/to/your/database');
 ```
 
 - **createItem()** Creates a new item with properties initialized to null based on the defined data format.
