@@ -45,15 +45,16 @@ const jsonbases = (name, format, directory) => {
     }
 
     const createItem = () => {
+
+        const data = JSON.parse(fs.readFileSync(path))
+
         const existsId = (id) => {
             for (const item of data) {
                 if (item._id === id) return true
             }
             return false
         }
-
-        const data = JSON.parse(fs.readFileSync(path))
-
+        
         const timestamp = Date.now().toString(36)
         let randomString = Math.random().toString(36).substring(2, 8)
 
