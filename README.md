@@ -46,8 +46,8 @@ const newItem = users.createItem(); // returns object ex: { name: null, age: nul
 - **createItem(number)** Creates multiple items with properties initialized to null based on the defined data format.
 
 ```javascript
-// Create a new item with default values
-const itemList = users.createItem(100); // returns object
+// Create a list of items with default values
+const itemList = users.createItem(100); // returns list
 // ex: [{ name: null, age: null, _id: 'ad5sad132' },...]
 ```
 
@@ -60,7 +60,7 @@ newItem.age = 25;
 const added = users.add(newItem); // returns boolean
 ```
 
-- **find(item)** Finds and returns an item in the database based on the provided criteria. Input should contain at least one unique value.
+- **find(item)** Finds and returns an item in the database based on the provided criteria. Input should contain only unique values.
 
 ```javascript
 // Find an item by unique values
@@ -82,7 +82,7 @@ newItem.age = 26;
 const updated = users.update(newItem); // returns boolean
 ```
 
-- **remove(item)** Removes an item from the database based on the provided criteria. Input should contain only unique value.
+- **remove(item)** Removes an item from the database based on the provided criteria. Input should contain only unique values.
 
 ```javascript
 // Remove an item by unique values
