@@ -8,7 +8,7 @@
   </a>
 </p>
 
-#### Jsonbases - simple package to manage JSON-based database in Node.js. It provides functions to create, read, update, and delete records in a JSON file, following a specified data format.
+#### Jsonbases - NPM package to manage JSON-based database in Node.js. It provides functions to create, read, update, and delete records in a JSON file, following a specified data format.
 
 ## Installation
 ```
@@ -43,14 +43,15 @@ const usersTemp = jsonbases('users-temp', format, './path/to/your/database');
 const newItem = users.createItem(); // returns object ex: { name: null, age: null, _id: 'ad5sad132' }
 ```
 
-- **createItem(number)** Creates multiple item with properties initialized to null based on the defined data format.
+- **createItem(number)** Creates multiple items with properties initialized to null based on the defined data format.
 
 ```javascript
 // Create a new item with default values
-const itemList = users.createItem(100); // returns object ex: [{ name: null, age: null, _id: 'ad5sad132' },...]
+const itemList = users.createItem(100); // returns object
+// ex: [{ name: null, age: null, _id: 'ad5sad132' },...]
 ```
 
-- **add(item)** Adds a new item to the database if it conforms to the specified data format.
+- **add(item)** Adds a new item into the database if it conforms to the specified data format.
 
 ```javascript
 // Add a new item to the database
@@ -95,7 +96,7 @@ const removed = users.remove({ name: 'John' }); // returns boolean
 const removedAll = users.removeAll({ age: 26 }); // returns boolean
 ```
 
-- **addFromList(list)** Adds all item in a list to the database if it conforms to the specified data format.
+- **addFromList(list)** Adds all items in a list to the database if it conforms to the specified data format.
 
 ```javascript
 // Add list of items to the database
