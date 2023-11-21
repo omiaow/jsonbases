@@ -30,17 +30,24 @@ const format = {
 };
 
 // Create user table named "users".
-const users1 = jsonbases('users-1', format);
+const users = jsonbases('users', format);
 
 //Optionally specify the path, by default it's './jsonbases'
-const users2 = jsonbases('users-2', format, './path/to/your/database');
+const usersTemp = jsonbases('users-temp', format, './path/to/your/database');
 ```
 
 - **createItem()** Creates a new item with properties initialized to null based on the defined data format.
 
 ```javascript
 // Create a new item with default values
-const newItem = db.createItem(); // returns object ex: { name: null, age: null, _id: 'ad5sad132' }
+const newItem = users.createItem(); // returns object ex: { name: null, age: null, _id: 'ad5sad132' }
+```
+
+- **createItem(number)** Creates multiple item with properties initialized to null based on the defined data format.
+
+```javascript
+// Create a new item with default values
+const itemList = users.createItem(100); // returns object ex: [{ name: null, age: null, _id: 'ad5sad132' },...]
 ```
 
 - **add(item)** Adds a new item to the database if it conforms to the specified data format.
@@ -49,57 +56,78 @@ const newItem = db.createItem(); // returns object ex: { name: null, age: null, 
 // Add a new item to the database
 newItem.name = 'John';
 newItem.age = 25;
-const added = db.add(newItem); // returns boolean
+const added = users.add(newItem); // returns boolean
 ```
 
 - **find(item)** Finds and returns an item in the database based on the provided criteria. Input should contain at least one unique value.
 
 ```javascript
 // Find an item by unique values
-const foundItem = db.find({ name: 'John' }); // returns object
+const foundItem = users.find({ name: 'John' }); // returns object
 ```
 
 - **findAll(item)** Finds and returns an array of items in the database based on the provided criteria.
 
 ```javascript
 // Find all items matching certain criteria
-const allItems = db.findAll({ age: 25 }); // returns list
+const allItems = users.findAll({ age: 25 }); // returns list
 ```
 
-- **update(item)** Updates an existing item in the database with the provided data and original ID.
+- **update(item)** Updates an existing item in the database with the provided data, including original ID.
 
 ```javascript
 // Update an existing item
 newItem.age = 26;
-const updated = db.update(newItem); // returns boolean
+const updated = users.update(newItem); // returns boolean
 ```
 
-- **remove(item)** Removes an item from the database based on the provided criteria. Input should contain at least one unique value.
+- **remove(item)** Removes an item from the database based on the provided criteria. Input should contain only unique value.
 
 ```javascript
 // Remove an item by unique values
-const removed = db.remove({ name: 'John' }); // returns boolean
+const removed = users.remove({ name: 'John' }); // returns boolean
 ```
 
-- **removeAll(item)** Removes all items from the database that match the provided criteria.
+- **removeAll(item)** Removes all items from the database that match the provided criteria. Input can be any data.
 
 ```javascript
 // Remove all items matching certain criteria
-const removedAll = db.removeAll({ age: 26 }); // returns boolean
+const removedAll = users.removeAll({ age: 26 }); // returns boolean
+```
+
+- **addFromList(list)** Adds all item in a list to the database if it conforms to the specified data format.
+
+```javascript
+// Add list of items to the database
+const addedFromList = users.addFromList(itemList); // returns boolean
+```
+
+- **updateFromList(list)** Updates multiple items in database as provided list, including original ID.
+
+```javascript
+// Update multiple items
+const updatedFromList = users.updateFromList(itemList); // returns boolean
+```
+
+- **removeFromList(list)** Removes multiple items from the database based on the provided list of criteria. Input should contain only unique values.
+
+```javascript
+// Remove multiple items
+const removedFromList = users.removeFromList([{ name: 'John' }, { name: 'Maria' }]); // returns boolean
 ```
 
 - **getAll()** Returns an array containing all items in the database.
 
 ```javascript
 // Get all items in the database
-const allData = db.getAll(); // returns list
+const allData = users.getAll(); // returns list
 ```
 
 - **reset()** Resets the entire table, removing all items.
 
 ```javascript
 // Reset the database (remove all items)
-db.reset();
+users.reset();
 ```
 
 ## Features
@@ -109,6 +137,8 @@ db.reset();
 - **Easy to use** - simple intuitive functions to manage with your tables.
 
 - **Fast to work** - simplicity of this tool makes your work more faster.
+
+- **List control** - manipulate large amount of data faster.
 
 <hr>
 <p align="center">
