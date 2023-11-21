@@ -4,8 +4,13 @@ const path = require('path')
 const jsonbases = (name, format, directory) => {
 
     const dataFormat = {...format}
-    dataFormat.uniques.push('_id')
+
     dataFormat.types._id = 'string'
+    if (dataFormat.uniques) dataFormat.uniques.push('_id')
+    else dataFormat.uniques = ['_id']
+
+    if (dataFormat.requireds) dataFormat.requireds.push('_id')
+    else dataFormat.requireds = ['_id']
 
     const folderPath = directory ? directory : './jsonbases'
 
