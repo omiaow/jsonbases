@@ -8,7 +8,7 @@
   </a>
 </p>
 
-#### Jsonbases - NPM package to manage JSON-based database in Node.js. It provides functions to create, read, update, and delete records in a JSON file, following a specified data format.
+#### Jsonbases - local Json database or NPM package to manage JSON-based dataset in Node.js. It provides functions to create, read, update, and delete records in a JSON file, following a specified data format.
 
 ## Installation
 ```
@@ -40,7 +40,8 @@ const usersTemp = jsonbases('users-temp', format, './path/to/your/database');
 
 ```javascript
 // Create a new item with default values
-const newItem = users.createItem(); // returns object ex: { name: null, age: null, _id: 'ad5sad132' }
+const newItem = users.createItem(); // returns object
+// ex: { name: null, age: null, _id: 'ad5sad132' }
 ```
 
 - **createItem(number)** Creates multiple items with properties initialized to null based on the defined data format.
@@ -60,21 +61,21 @@ newItem.age = 25;
 const added = users.add(newItem); // returns boolean
 ```
 
-- **find(item)** Finds and returns an item in the database based on the provided criteria. Input should contain only unique values.
+- **find(item)** Finds and returns an item from the database based on provided criteria. Input should contain only unique values.
 
 ```javascript
 // Find an item by unique values
 const foundItem = users.find({ name: 'John' }); // returns object
 ```
 
-- **findAll(item)** Finds and returns an array of items in the database based on the provided criteria.
+- **findAll(item)** Finds and returns an array of items from the database based on provided criteria.
 
 ```javascript
 // Find all items matching certain criteria
 const allItems = users.findAll({ age: 25 }); // returns list
 ```
 
-- **update(item)** Updates an existing item in the database with the provided data, including original ID.
+- **update(item)** Updates an existing item in the database with the provided data, including original _id.
 
 ```javascript
 // Update an existing item
@@ -82,14 +83,14 @@ newItem.age = 26;
 const updated = users.update(newItem); // returns boolean
 ```
 
-- **remove(item)** Removes an item from the database based on the provided criteria. Input should contain only unique values.
+- **remove(item)** Removes an item from the database based on provided criteria. Input should contain only unique values.
 
 ```javascript
 // Remove an item by unique values
 const removed = users.remove({ name: 'John' }); // returns boolean
 ```
 
-- **removeAll(item)** Removes all items from the database that match the provided criteria. Input can be any data.
+- **removeAll(item)** Removes all items from the database that matches provided criteria. Input can be any data.
 
 ```javascript
 // Remove all items matching certain criteria
@@ -103,14 +104,14 @@ const removedAll = users.removeAll({ age: 26 }); // returns boolean
 const addedFromList = users.addFromList(itemList); // returns boolean
 ```
 
-- **updateFromList(list)** Updates multiple items in database as provided list, including original ID.
+- **updateFromList(list)** Updates multiple items in database as provided list, including original _id.
 
 ```javascript
 // Update multiple items
 const updatedFromList = users.updateFromList(itemList); // returns boolean
 ```
 
-- **removeFromList(list)** Removes multiple items from the database based on the provided list of criteria. Input should contain only unique values.
+- **removeFromList(list)** Removes multiple items from the database based on provided list of criteria. Input should contain only unique values.
 
 ```javascript
 // Remove multiple items
