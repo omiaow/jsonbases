@@ -12,7 +12,9 @@ const jsonbases = (name, format, directory) => {
     if (dataFormat.requireds) dataFormat.requireds.push('_id')
     else dataFormat.requireds = ['_id']
 
-    const folderPath = directory ? directory : './jsonbases'
+    const correctPath = (directory && directory[directory.length-1] === '/') ?
+        directory.slice(0, directory.length-1) : directory
+    const folderPath = correctPath ? correctPath : './jsonbases'
 
     if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath, { recursive: true });
@@ -72,6 +74,7 @@ const jsonbases = (name, format, directory) => {
 
         const data = JSON.parse(fs.readFileSync(path))
         const list = [...data]
+        const result = []
 
         for (let i=0; i<length; i++) {
             const timestamp = Date.now().toString(36)
@@ -86,9 +89,10 @@ const jsonbases = (name, format, directory) => {
                 if (key !== '_id') item[key] = null
             }
             list.push(item)
+            result.push(item)
         }
 
-        return length > 1 ? list : list[list.length-1]
+        return length > 1 ? result : result[0]
     }
 
     const add = (item) => {
